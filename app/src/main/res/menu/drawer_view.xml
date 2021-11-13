@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:title="Tìm kiếm">
+            <menu>
+                <item
+                    android:id="@+id/nav_TimKiemLH"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="Tìm kiếm loại hàng"/>
+                <item
+                    android:id="@+id/nav_TimKiemMH"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="Tìm kiếm mã hàng"/>
+            </menu>
+        </item>
+
+        <item
+            android:id="@+id/nav_HoaDon"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Quản lý hoá đơn"/>
+        <item
+            android:id="@+id/nav_LoaiHang"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Quản lý loại hàng"/>
+        <item
+            android:id="@+id/nav_Hang"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Quản lý hàng hoá"/>
+
+
+
+        <item android:title="Thống kê">
+            <menu>
+                <item
+                    android:id="@+id/sub_Top"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="Top 10 hàng hoá được mua nhiều nhất"/>
+                <item
+                    android:id="@+id/sub_DoanhThu"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="Doanh thu"/>
+            </menu>
+        </item>
+        <item android:title="Người Dùng">
+            <menu>
+                <item
+                    android:id="@+id/sub_Adduser"
+                    android:icon="@mipmap/ic_launcher"
+                    android:visible="false"
+                    android:title="Thêm người dùng"/>
+                <item
+                    android:id="@+id/sub_Pass"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="Đổi mật khẩu"/>
+                <item
+                    android:id="@+id/sub_Logout"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="Đăng xuất"/>
+            </menu>
+        </item>
+
+    </group>
+
+</menu>
