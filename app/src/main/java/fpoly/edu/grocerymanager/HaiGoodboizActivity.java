@@ -11,4 +11,8 @@ public class HaiGoodboizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hai_goodboiz);
     }
+
+    public void gonDeptraivcl(){
+
+    }
 }
