@@ -5,6 +5,7 @@ public class Data_SQLite {
     public static final String INSERT_NGUOI_DUNG =
             "INSERT INTO NguoiDung (maND, hoTen, matKhau, soDienThoai) values \n" +
                     "('NgocHai','Lương Ngọc Hải', '123', '0911602532'),\n" +
+                    "('admin','Lê Gôn', 'admin', '0911602532'),\n" +
                     "('HongThi','Nguyễn Hồng Thi', '123', '0943225643'),\n" +
                     "('MyQuyen', 'Lương Mỹ Quyên', '123', '0911602532'),\n" +
                     "('HoangTrang', 'Trần Hoàng Trang', '123', '0911602532'),\n" +

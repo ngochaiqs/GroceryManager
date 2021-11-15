@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.navigation.NavigationView;
 
+import fpoly.edu.grocerymanager.dao.NguoiDungDAO;
 import fpoly.edu.grocerymanager.fragment.AddUserFragment;
 import fpoly.edu.grocerymanager.fragment.DoanhThuFragment;
 import fpoly.edu.grocerymanager.fragment.DoiMatKhauFragment;
@@ -25,13 +26,14 @@ import fpoly.edu.grocerymanager.fragment.QuanLyHoaDonFragment;
 import fpoly.edu.grocerymanager.fragment.TimKiemLoaiHangFragment;
 import fpoly.edu.grocerymanager.fragment.TimKiemMaHangFragment;
 import fpoly.edu.grocerymanager.fragment.TopFragment;
+import fpoly.edu.grocerymanager.model.NguoiDung;
 
 public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer;
         Toolbar toolbar;
         View mHeaderView;
         TextView edUser;
-        //ThuThuDAO thuThuDAO;
+        NguoiDungDAO nguoiDungDAO;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -59,16 +61,16 @@ public class MainActivity extends AppCompatActivity {
             mHeaderView = nv.getHeaderView(0);
             edUser = mHeaderView.findViewById(R.id.tvtUser);
 
-//            Intent i = getIntent();
-//            String user = i.getStringExtra("user");
-//            thuThuDAO = new ThuThuDAO(this);
-//            ThuThu thuThu = thuThuDAO.getID(user);
-//            String username = thuThu.getHoTen();
-            //           edUser.setText("Xin chào "+username+" !");
+            Intent i = getIntent();
+            String user = i.getStringExtra("user");
+            nguoiDungDAO = new NguoiDungDAO(this);
+            NguoiDung nguoiDung = nguoiDungDAO.getID(user);
+            String username = nguoiDung.getHoTen();
+                       edUser.setText("Xin chào "+username+" !");
 
-//            if (user.equalsIgnoreCase("admin")){
-//                nv.getMenu().findItem(R.id.sub_Adduser).setVisible(true);
-//            }
+            if (user.equalsIgnoreCase("admin")){
+               nv.getMenu().findItem(R.id.sub_Adduser).setVisible(true);
+           }
 
             nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
