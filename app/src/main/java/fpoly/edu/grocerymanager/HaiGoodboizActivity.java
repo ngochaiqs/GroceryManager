@@ -12,7 +12,7 @@ public class HaiGoodboizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hai_goodboiz);
     }
 
-    public void gonDeptraivcl(){
+    public void gonDeptraivc111l(){
 
     }
 }
