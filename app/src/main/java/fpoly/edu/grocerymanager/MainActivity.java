@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
@@ -23,8 +23,7 @@ import fpoly.edu.grocerymanager.fragment.DoiMatKhauFragment;
 import fpoly.edu.grocerymanager.fragment.HangFragment;
 import fpoly.edu.grocerymanager.fragment.LoaiHangFragment;
 import fpoly.edu.grocerymanager.fragment.QuanLyHoaDonFragment;
-import fpoly.edu.grocerymanager.fragment.TimKiemLoaiHangFragment;
-import fpoly.edu.grocerymanager.fragment.TimKiemMaHangFragment;
+import fpoly.edu.grocerymanager.fragment.TimKiemFragment;
 import fpoly.edu.grocerymanager.fragment.TopFragment;
 import fpoly.edu.grocerymanager.model.NguoiDung;
 
@@ -98,17 +97,10 @@ public class MainActivity extends AppCompatActivity {
                                     .replace(R.id.flContent, hangFragment).commit();
 
                             break;
-                        case R.id.nav_TimKiemLH:
-                            setTitle("Tìm kiếm theo loại hàng");
-                            TimKiemLoaiHangFragment timKiemLoaiHangFragment = new TimKiemLoaiHangFragment();
-                            manager.beginTransaction().replace(R.id.flContent, timKiemLoaiHangFragment)
-                                    .commit();
-
-                            break;
-                        case R.id.nav_TimKiemMH:
-                            setTitle("Tìm kiếm theo mã hàng");
-                            TimKiemMaHangFragment timKiemMaHangFragment = new TimKiemMaHangFragment();
-                            manager.beginTransaction().replace(R.id.flContent, timKiemMaHangFragment)
+                        case R.id.nav_TimKiem:
+                            setTitle("Tìm kiếm");
+                            TimKiemFragment timKiemFragment = new TimKiemFragment();
+                            manager.beginTransaction().replace(R.id.flContent, timKiemFragment)
                                     .commit();
 
                             break;

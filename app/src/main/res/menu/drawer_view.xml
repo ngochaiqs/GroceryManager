@@ -1,30 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
-        <item android:title="Tìm kiếm">
-            <menu>
-                <item
-                    android:id="@+id/nav_TimKiemLH"
-                    android:icon="@mipmap/ic_launcher"
-                    android:title="Tìm kiếm loại hàng"/>
-                <item
-                    android:id="@+id/nav_TimKiemMH"
-                    android:icon="@mipmap/ic_launcher"
-                    android:title="Tìm kiếm mã hàng"/>
-            </menu>
-        </item>
+        <item
+            android:id="@+id/nav_TimKiem"
+            android:icon="@drawable/outline_search_black_48"
+            android:title="Tìm kiếm"/>
 
         <item
             android:id="@+id/nav_HoaDon"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/outline_local_grocery_store_black_48"
             android:title="Quản lý hoá đơn"/>
         <item
             android:id="@+id/nav_LoaiHang"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/outline_menu_book_black_48"
             android:title="Quản lý loại hàng"/>
         <item
             android:id="@+id/nav_Hang"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/outline_playlist_add_black_48"
             android:title="Quản lý hàng hoá"/>
 
 
@@ -33,11 +25,11 @@
             <menu>
                 <item
                     android:id="@+id/sub_Top"
-                    android:icon="@mipmap/ic_launcher"
+                    android:icon="@drawable/outline_trending_up_black_48"
                     android:title="Top 10 hàng hoá được mua nhiều nhất"/>
                 <item
                     android:id="@+id/sub_DoanhThu"
-                    android:icon="@mipmap/ic_launcher"
+                    android:icon="@drawable/outline_paid_black_48"
                     android:title="Doanh thu"/>
             </menu>
         </item>
@@ -45,16 +37,16 @@
             <menu>
                 <item
                     android:id="@+id/sub_Adduser"
-                    android:icon="@mipmap/ic_launcher"
+                    android:icon="@drawable/outline_person_add_black_48"
                     android:visible="false"
                     android:title="Thêm người dùng"/>
                 <item
                     android:id="@+id/sub_Pass"
-                    android:icon="@mipmap/ic_launcher"
+                    android:icon="@drawable/outline_password_black_48"
                     android:title="Đổi mật khẩu"/>
                 <item
                     android:id="@+id/sub_Logout"
-                    android:icon="@mipmap/ic_launcher"
+                    android:icon="@drawable/outline_logout_black_48"
                     android:title="Đăng xuất"/>
             </menu>
         </item>
