@@ -63,14 +63,14 @@ public class DbHelper extends SQLiteOpenHelper {
 
         //Thêm dữ liệu Người dùng
         db.execSQL(Data_SQLite.INSERT_NGUOI_DUNG);
-        //Thêm dữ liệu Loại hàng
-        db.execSQL(Data_SQLite.INSERT_LOAI_HANG);
-        //Thêm dữ liệu Hàng
-        db.execSQL(Data_SQLite.INSERT_HANG);
-        //Thêm dữ liệu Hoá đơn
-        db.execSQL(Data_SQLite.INSERT_HOA_DON);
-        //Thêm dữ liệu Hoá đơn chi tiết
-        db.execSQL(Data_SQLite.INSERT_HOA_DON_CHI_TIET);
+//        //Thêm dữ liệu Loại hàng
+//        db.execSQL(Data_SQLite.INSERT_LOAI_HANG);
+//        //Thêm dữ liệu Hàng
+//        db.execSQL(Data_SQLite.INSERT_HANG);
+//        //Thêm dữ liệu Hoá đơn
+//        db.execSQL(Data_SQLite.INSERT_HOA_DON);
+//        //Thêm dữ liệu Hoá đơn chi tiết
+//        db.execSQL(Data_SQLite.INSERT_HOA_DON_CHI_TIET);
 
     }
 

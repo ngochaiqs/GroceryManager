@@ -1,22 +1,22 @@
 package fpoly.edu.grocerymanager.model;
 
 public class Hang {
-    private Integer maHang;
+    private int maHang;
     private String tenHang;
     private int gia;
-    private Integer maLoai;
+    private int maLoai;
 
     public Hang() {
     }
 
-    public Hang(Integer maHang, String tenHang, int gia, Integer maLoai) {
+    public Hang(int maHang, String tenHang, int gia, int maLoai) {
         this.maHang = maHang;
         this.tenHang = tenHang;
         this.gia = gia;
         this.maLoai = maLoai;
     }
 
-    public Integer getMaHang() {
+    public int getMaHang() {
         return maHang;
     }
 
@@ -40,7 +40,7 @@ public class Hang {
         this.gia = gia;
     }
 
-    public Integer getMaLoai() {
+    public int getMaLoai() {
         return maLoai;
     }
 

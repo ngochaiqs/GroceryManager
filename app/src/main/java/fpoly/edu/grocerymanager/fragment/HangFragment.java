@@ -198,8 +198,8 @@ public class HangFragment extends Fragment {
     }
     public int validate(){
         int check = 1;
-        if (edTenHang.getText().length()==0 || edGiaThue.getText().length()==0 ){
-            Toast.makeText(getContext(),"Bạn phải nhập đủ thông tin",Toast.LENGTH_SHORT).show();
+        if (edTenHang.getText().length()==0 || edGiaThue.getText().length()==0) {
+            Toast.makeText(getContext(), "Bạn phải nhập đủ thông tin", Toast.LENGTH_SHORT).show();
             check = -1;
         }
         return check;

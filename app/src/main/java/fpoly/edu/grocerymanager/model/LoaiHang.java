@@ -1,7 +1,7 @@
 package fpoly.edu.grocerymanager.model;
 
 public class LoaiHang {
-    private Integer maLoai;
+    private int maLoai;
     private String tenLoai;
 
     public LoaiHang() {

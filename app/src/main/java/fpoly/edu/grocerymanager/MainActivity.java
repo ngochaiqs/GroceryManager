@@ -51,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
             ab.setDisplayHomeAsUpEnabled(true);
 
             FragmentManager manager = getSupportFragmentManager();
-            QuanLyHoaDonFragment quanLyHoaDonFragment = new QuanLyHoaDonFragment();
+            HangFragment hangFragment = new HangFragment();
             manager.beginTransaction()
-                    .replace(R.id.flContent, quanLyHoaDonFragment).commit();
+                    .replace(R.id.flContent, hangFragment).commit();
 
             NavigationView nv = findViewById(R.id.nvView);
             //show user in header
