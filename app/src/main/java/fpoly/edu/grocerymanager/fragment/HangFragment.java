@@ -2,6 +2,7 @@ package fpoly.edu.grocerymanager.fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,6 +34,10 @@ import fpoly.edu.grocerymanager.model.Hang;
 import fpoly.edu.grocerymanager.model.LoaiHang;
 
 public class HangFragment extends Fragment {
+    SearchView searchView;
+    SearchManager searchManager;
+
+
     ListView lvHang;
     HangDAO hangDAO;
 
@@ -58,9 +64,29 @@ public class HangFragment extends Fragment {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_hang, container, false);
         lvHang = v.findViewById(R.id.lvHang);
+        registerForContextMenu(lvHang);
+
+        searchView = v.findViewById(R.id.search_view);
+        searchView.setSubmitButtonEnabled(true);
         hangDAO = new HangDAO(getActivity());
         capNhatLv();
         fab = v.findViewById(R.id.fab);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapter.getFilter().filter(query);
+                lvHang.setAdapter(adapter);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                lvHang.setAdapter(adapter);
+                return false;
+            }
+        });
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +104,9 @@ public class HangFragment extends Fragment {
         });//nhấn và giữ
         return v;
     }
+
+
+
     void capNhatLv(){
         list = (List<Hang>) hangDAO.getAll();
         adapter = new HangAdapter(getActivity(),this, list);
@@ -204,4 +233,10 @@ public class HangFragment extends Fragment {
         }
         return check;
     }
+    private void TimKiem(){
+        list = (List<Hang>) hangDAO.getAll();
+        adapter = new HangAdapter(getActivity(),this, list);
+        lvHang.setAdapter(adapter);
+    }
+
 }

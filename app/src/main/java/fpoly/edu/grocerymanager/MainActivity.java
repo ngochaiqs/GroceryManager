@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
             ab.setHomeAsUpIndicator(R.drawable.menu);
             ab.setDisplayHomeAsUpEnabled(true);
 
+
+
             FragmentManager manager = getSupportFragmentManager();
             HangFragment hangFragment = new HangFragment();
             manager.beginTransaction()
@@ -151,4 +153,25 @@ public class MainActivity extends AppCompatActivity {
                 drawer.openDrawer(GravityCompat.START);
             return super.onOptionsItemSelected(item);
         }
-    }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.search_view,menu);
+//        MenuItem menuItem = menu.findItem(R.id.search);
+//        SearchView searchView = (SearchView) menuItem.getActionView();
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                adapter.getFilter().filter(query);
+//                menuItem.collapseActionView();
+//                return false;
+//            }
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//                // UserFeedback.show( "SearchOnQueryTextChanged: " + s);
+//                return false;
+//            }
+//        });
+//        return true;
+//    }
+}
