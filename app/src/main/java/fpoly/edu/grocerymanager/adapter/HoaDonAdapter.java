@@ -65,10 +65,10 @@ public class HoaDonAdapter extends ArrayAdapter<HoaDon> {
                 tvTrangThai = v.findViewById(R.id.tvTrangThai);
                 if (item.getTrangThai()==1){
                     tvTrangThai.setTextColor(Color.BLUE);
-                    tvTrangThai.setText("Đã trả sách ");
+                    tvTrangThai.setText("Tiền Mặt");
                 }else {
                     tvTrangThai.setTextColor(Color.RED);
-                    tvTrangThai.setText("Chưa trả sách");
+                    tvTrangThai.setText("Chuyển Khoản");
                 }
                 imgDel = v.findViewById(R.id.imgDeleteLS);
             }catch (Exception e){
@@ -76,12 +76,12 @@ public class HoaDonAdapter extends ArrayAdapter<HoaDon> {
             }
 
         }
-//        imgDel.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                fragment.xoa(String.valueOf(item.getMaHD()));
-//            }
-//        });
+        imgDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment.xoa(String.valueOf(item.getMaHD()));
+            }
+        });
 
         return v ;
     }

@@ -63,8 +63,14 @@ public class HangDAO {
     }
     //get data theo id
     public Hang getID(String id){
-        String sql = "SELECT * FROM Sach WHERE maHang=?";
+        String sql = "SELECT * FROM Hang WHERE maHang=?";
         List<Hang> list = getData(sql,id);
+        return list.get(0);
+    }
+    //get name
+    public Hang getName(String name){
+        String sql = "SELECT * FROM Hang WHERE tenHang=?";
+        List<Hang> list = getData(sql, name);
         return list.get(0);
     }
 }
