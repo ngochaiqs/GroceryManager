@@ -11,28 +11,28 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
 
     static final String CREATE_TABLE_NGUOI_DUNG =
-            "create table NguoiDung (maND TEXT PRIMARY KEY," +
+            "create table NguoiDung (maND TEXT PRIMARY KEY NOT NULL," +
                     "hoTen   TEXT NOT NULL," +
                     "soDienThoai   INTEGER NOT NULL," +
                     "matKhau TEXT NOT NULL)";
     //
     static final String CREATE_TABLE_LOAI_HANG =
             "create table LoaiHang (" +
-                    "maLoai  TEXT PRIMARY KEY," +
+                    "maLoai  INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "tenLoai TEXT NOT NULL)";
     //
     static final String CREATE_TABLE_HANG =
             "create table Hang (" +
-                    "maHang  TEXT PRIMARY KEY,"+
+                    "maHang  INTEGER PRIMARY KEY AUTOINCREMENT,"+
                     "tenHang TEXT    NOT NULL,"     +
                     "gia INTEGER NOT NULL,"    +
-                    "maLoai  TEXT REFERENCES LoaiHang (maloai)) ";
+                    "maLoai  INTEGER REFERENCES LoaiHang (maloai)) ";
     //
     static final String CREATE_TABLE_HOA_DON =
             "create table HoaDon ("  +
                     "maHD   INTEGER PRIMARY KEY AUTOINCREMENT, "+
                     "maND   TEXT    REFERENCES NguoiDung (maND), "+
-                    "mahang  TEXT REFERENCES Hang (maHang), "+
+                    "mahang  INTEGER REFERENCES Hang (maHang), "+
                     "tongTien INTEGER NOT NULL,  "+
                     "ngayLap  DATE NOT NULL,"+
                     "trangThai  INTEGER NOT NULL  )";
@@ -40,7 +40,7 @@ public class DbHelper extends SQLiteOpenHelper {
     static final String CREATE_TABLE_HOA_DON_CHI_TIET =
             "create table HoaDonChiTiet ("  +
                     "maHD   INTEGER PRIMARY KEY AUTOINCREMENT, "+
-                    "mahang  TEXT REFERENCES Hang (maHang), "+
+                    "mahang  INTEGER REFERENCES Hang (maHang), "+
                     "soLuong INTEGER NOT NULL,  "+
                     "ghiChu  TEXT NOT NULL,"+
                     "gia  INTEGER NOT NULL  )";
@@ -63,14 +63,14 @@ public class DbHelper extends SQLiteOpenHelper {
 
         //Thêm dữ liệu Người dùng
         db.execSQL(Data_SQLite.INSERT_NGUOI_DUNG);
-        //Thêm dữ liệu Loại hàng
-        db.execSQL(Data_SQLite.INSERT_LOAI_HANG);
-        //Thêm dữ liệu Hàng
-        db.execSQL(Data_SQLite.INSERT_HANG);
-        //Thêm dữ liệu Hoá đơn
-        db.execSQL(Data_SQLite.INSERT_HOA_DON);
-        //Thêm dữ liệu Hoá đơn chi tiết
-        db.execSQL(Data_SQLite.INSERT_HOA_DON_CHI_TIET);
+//        //Thêm dữ liệu Loại hàng
+//        db.execSQL(Data_SQLite.INSERT_LOAI_HANG);
+//        //Thêm dữ liệu Hàng
+//        db.execSQL(Data_SQLite.INSERT_HANG);
+//        //Thêm dữ liệu Hoá đơn
+//        db.execSQL(Data_SQLite.INSERT_HOA_DON);
+//        //Thêm dữ liệu Hoá đơn chi tiết
+//        db.execSQL(Data_SQLite.INSERT_HOA_DON_CHI_TIET);
 
     }
 

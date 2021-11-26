@@ -5,33 +5,34 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.navigation.NavigationView;
 
+import fpoly.edu.grocerymanager.dao.NguoiDungDAO;
 import fpoly.edu.grocerymanager.fragment.AddUserFragment;
 import fpoly.edu.grocerymanager.fragment.DoanhThuFragment;
 import fpoly.edu.grocerymanager.fragment.DoiMatKhauFragment;
 import fpoly.edu.grocerymanager.fragment.HangFragment;
 import fpoly.edu.grocerymanager.fragment.LoaiHangFragment;
 import fpoly.edu.grocerymanager.fragment.QuanLyHoaDonFragment;
-import fpoly.edu.grocerymanager.fragment.TimKiemLoaiHangFragment;
-import fpoly.edu.grocerymanager.fragment.TimKiemMaHangFragment;
+import fpoly.edu.grocerymanager.fragment.TimKiemFragment;
 import fpoly.edu.grocerymanager.fragment.TopFragment;
+import fpoly.edu.grocerymanager.model.NguoiDung;
 
 public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer;
         Toolbar toolbar;
         View mHeaderView;
         TextView edUser;
-        //ThuThuDAO thuThuDAO;
+        NguoiDungDAO nguoiDungDAO;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -49,26 +50,28 @@ public class MainActivity extends AppCompatActivity {
             ab.setHomeAsUpIndicator(R.drawable.menu);
             ab.setDisplayHomeAsUpEnabled(true);
 
+
+
             FragmentManager manager = getSupportFragmentManager();
-            QuanLyHoaDonFragment quanLyHoaDonFragment = new QuanLyHoaDonFragment();
+            HangFragment hangFragment = new HangFragment();
             manager.beginTransaction()
-                    .replace(R.id.flContent, quanLyHoaDonFragment).commit();
+                    .replace(R.id.flContent, hangFragment).commit();
 
             NavigationView nv = findViewById(R.id.nvView);
             //show user in header
             mHeaderView = nv.getHeaderView(0);
             edUser = mHeaderView.findViewById(R.id.tvtUser);
 
-//            Intent i = getIntent();
-//            String user = i.getStringExtra("user");
-//            thuThuDAO = new ThuThuDAO(this);
-//            ThuThu thuThu = thuThuDAO.getID(user);
-//            String username = thuThu.getHoTen();
-            //           edUser.setText("Xin chào "+username+" !");
+            Intent i = getIntent();
+            String user = i.getStringExtra("user");
+            nguoiDungDAO = new NguoiDungDAO(this);
+            NguoiDung nguoiDung = nguoiDungDAO.getID(user);
+            String username = nguoiDung.getHoTen();
+                       edUser.setText("Xin chào "+username+" !");
 
-//            if (user.equalsIgnoreCase("admin")){
-//                nv.getMenu().findItem(R.id.sub_Adduser).setVisible(true);
-//            }
+            if (user.equalsIgnoreCase("admin")){
+               nv.getMenu().findItem(R.id.sub_Adduser).setVisible(true);
+           }
 
             nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -96,17 +99,10 @@ public class MainActivity extends AppCompatActivity {
                                     .replace(R.id.flContent, hangFragment).commit();
 
                             break;
-                        case R.id.nav_TimKiemLH:
-                            setTitle("Tìm kiếm theo loại hàng");
-                            TimKiemLoaiHangFragment timKiemLoaiHangFragment = new TimKiemLoaiHangFragment();
-                            manager.beginTransaction().replace(R.id.flContent, timKiemLoaiHangFragment)
-                                    .commit();
-
-                            break;
-                        case R.id.nav_TimKiemMH:
-                            setTitle("Tìm kiếm theo mã hàng");
-                            TimKiemMaHangFragment timKiemMaHangFragment = new TimKiemMaHangFragment();
-                            manager.beginTransaction().replace(R.id.flContent, timKiemMaHangFragment)
+                        case R.id.nav_TimKiem:
+                            setTitle("Tìm kiếm");
+                            TimKiemFragment timKiemFragment = new TimKiemFragment();
+                            manager.beginTransaction().replace(R.id.flContent, timKiemFragment)
                                     .commit();
 
                             break;
@@ -157,4 +153,25 @@ public class MainActivity extends AppCompatActivity {
                 drawer.openDrawer(GravityCompat.START);
             return super.onOptionsItemSelected(item);
         }
-    }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.search_view,menu);
+//        MenuItem menuItem = menu.findItem(R.id.search);
+//        SearchView searchView = (SearchView) menuItem.getActionView();
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                adapter.getFilter().filter(query);
+//                menuItem.collapseActionView();
+//                return false;
+//            }
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//                // UserFeedback.show( "SearchOnQueryTextChanged: " + s);
+//                return false;
+//            }
+//        });
+//        return true;
+//    }
+}

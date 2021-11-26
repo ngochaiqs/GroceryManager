@@ -1,66 +1,229 @@
 package fpoly.edu.grocerymanager.fragment;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import fpoly.edu.grocerymanager.R;
+import fpoly.edu.grocerymanager.adapter.HangSpinnerAdapter;
+import fpoly.edu.grocerymanager.adapter.HoaDonAdapter;
+import fpoly.edu.grocerymanager.dao.HangDAO;
+import fpoly.edu.grocerymanager.dao.HoaDonDAO;
+import fpoly.edu.grocerymanager.model.Hang;
+import fpoly.edu.grocerymanager.model.HoaDon;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link QuanLyHoaDonFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class QuanLyHoaDonFragment extends Fragment {
+    ListView lvHoaDon;
+    ArrayList<HoaDon> list;
+    static HoaDonDAO dao;
+    HoaDonAdapter adapter;
+    HoaDon item;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    FloatingActionButton fab;
+    Dialog dialog;
+    EditText edMaHD;
+    Spinner spHang;
+    TextView tvNgayLap, tvTongTien;
+    CheckBox chkTrangThai;
+    Button btnSave, btnCancel;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    public QuanLyHoaDonFragment() {
-        // Required empty public constructor
-    }
+    HangSpinnerAdapter hangSpinnerAdapter;
+    ArrayList<Hang> listHang;
+    HangDAO hangDAO;
+    Hang hang;
+    int maHang, tongTien;
+    int positionHang;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment QuanLyHoaDonFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static QuanLyHoaDonFragment newInstance(String param1, String param2) {
-        QuanLyHoaDonFragment fragment = new QuanLyHoaDonFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quan_ly_hoa_don, container, false);
+        View v = inflater.inflate(R.layout.fragment_quan_ly_hoa_don, container, false);
+        lvHoaDon = v.findViewById(R.id.lvHoaDon);
+        fab = v.findViewById(R.id.fab);
+        dao = new HoaDonDAO(getActivity());
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog(getActivity(),0);
+            }
+        });
+        //nhấn và giữ
+        lvHoaDon.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                item = list.get(position);
+                openDialog(getActivity(),1); //update
+                return false;
+            }
+        });
+        capNhatLv();
+        return v;
+    }
+    void capNhatLv(){
+        list =(ArrayList<HoaDon>) dao.getAll();
+        adapter=new HoaDonAdapter(getActivity(),this,list);
+        lvHoaDon.setAdapter(adapter);
+
+    }
+    protected void openDialog(final Context context, final int type){
+        //custom dialog
+        dialog = new Dialog(context);
+        dialog.setContentView(R.layout.hoa_don_dialog);
+        edMaHD = dialog.findViewById(R.id.edMaHD);
+        spHang = dialog.findViewById(R.id.spMaHang);
+        tvNgayLap = dialog.findViewById(R.id.tvNgay);
+        tvTongTien = dialog.findViewById(R.id.tvTongTien);
+        chkTrangThai = dialog.findViewById(R.id.chkTrangThai);
+        btnCancel = dialog.findViewById(R.id.btnCancelHD);
+        btnSave = dialog.findViewById(R.id.btnSaveHD);
+        //set ngay thue
+        tvNgayLap.setText("Ngày lập: "+sdf.format(new Date()));
+        edMaHD.setEnabled(false);
+
+        hangDAO = new HangDAO(context);
+        listHang = new ArrayList<Hang>();
+        listHang = (ArrayList<Hang>) hangDAO.getAll();
+        hangSpinnerAdapter = new HangSpinnerAdapter(context,listHang);
+        spHang.setAdapter(hangSpinnerAdapter);
+        //lấy mã loaisách
+        spHang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                maHang = listHang.get(position).getMaHang();
+                tongTien = listHang.get(position).getGia();
+                tvTongTien.setText("Tổng tiền: "+tongTien);
+                //       Toast.makeText(context,"Chọn:"+listSach.get(position).getTenSach(),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        //edit set data lên form
+        if (type != 0){
+            edMaHD.setText(String.valueOf(item.getMaHD()));
+
+//            for (int i = 0; i < listThanhVien.size(); i++)
+//                if (item.getMaTV() == (listThanhVien.get(i).getMaTV())){
+//                    positionTV = i;
+//                }
+//            spTV.setSelection(positionTV);
+
+            for (int i = 0 ; i < listHang.size(); i++)
+                if (item.getMaHang() == (listHang.get(i).getMaHang())){
+                    positionHang = i;
+                }
+            spHang.setSelection(positionHang);
+
+            tvNgayLap.setText("Ngày lập: "+sdf.format(item.getNgayLap()));
+            tvTongTien.setText("Tổng tiền: "+item.getTongTien());
+            if (item.getTrangThai() == 1){
+                chkTrangThai.setChecked(true);
+            }else {
+                chkTrangThai.setChecked(false);
+            }
+        }
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                item = new HoaDon();
+                item.setMaHang(maHang);
+                item.setNgayLap(new Date());
+                item.setTongTien(tongTien);
+                if (chkTrangThai.isChecked()){
+                    item.setTrangThai(1);
+                }else {
+                    item.setTrangThai(0);
+                }
+                if (type == 0){
+                    // type = 0 (insert)
+                    if (dao.insert(item) > 0){
+                        Toast.makeText(context,"Thêm thành công",Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(context,"Thêm thất bại",Toast.LENGTH_SHORT).show();
+                    }
+
+                }else {
+                    //type = 1(update)
+                    item.setMaHD(Integer.parseInt(edMaHD.getText().toString()));
+                    if (dao.update(item) > 0){
+                        Toast.makeText(context,"Sửa thành công",Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(context,"Sửa thất bại",Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+                capNhatLv();
+                dialog.dismiss();
+            }
+
+        });
+
+        dialog.show();
+    }
+    public void xoa(String Id){
+        //sử dụng Alert
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Delete");
+        builder.setMessage("Bạn có muốn xóa không");
+        builder.setCancelable(true);
+
+        builder.setPositiveButton("Có",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        //gọi function Delete
+                        dao.delete(Id);
+                        Toast.makeText(getActivity(), "Đã xoá thành công", Toast.LENGTH_SHORT).show();
+                        //cập nhật listview
+                        capNhatLv();
+                        dialog.cancel();
+
+                    }
+                });
+        builder.setNegativeButton("Không",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert = builder.create();
+        builder.show();
     }
 }
