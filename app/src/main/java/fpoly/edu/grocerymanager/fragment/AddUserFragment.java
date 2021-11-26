@@ -4,62 +4,88 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import fpoly.edu.grocerymanager.R;
+import fpoly.edu.grocerymanager.dao.NguoiDungDAO;
+import fpoly.edu.grocerymanager.model.NguoiDung;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AddUserFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class AddUserFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    EditText edUser, edHoTen , edPass, edRePass;
+    Button btnSave, btnCancel;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public AddUserFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AddUserFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AddUserFragment newInstance(String param1, String param2) {
-        AddUserFragment fragment = new AddUserFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    NguoiDungDAO dao;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_user, container, false);
+        View v = inflater.inflate(R.layout.fragment_add_user, container, false);
+        edUser = v.findViewById(R.id.edUser);
+        edHoTen = v.findViewById(R.id.edHoTen);
+        edPass = v.findViewById(R.id.edPass);
+        edRePass = v.findViewById(R.id.edRePass);
+        btnSave = v.findViewById(R.id.btnSavelUser);
+        btnCancel = v.findViewById(R.id.btnCancellUser);
+        dao = new NguoiDungDAO(getActivity());
+
+        //sự kiện phương thức xoá
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edUser.setText("");
+                edHoTen.setText("");
+                edPass.setText("");
+                edRePass.setText("");
+            }
+        });
+        //sự kiện phương thức lưu
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //khai báo đối tượng thu thư
+                NguoiDung thuThu = new NguoiDung();
+                //set dữ liệu nhập vào
+                thuThu.setMaND(edUser.getText().toString());
+                thuThu.setHoTen(edHoTen.getText().toString());
+                thuThu.setMatKhau(edPass.getText().toString());
+                //gọi hàm kiểm tra validate
+                if (validate()>0){
+                    //gọi hàm insert của ThuThuDAO
+                    if (dao.insert(thuThu)>0){
+                        Toast.makeText(getActivity(),"Thêm thành công",Toast.LENGTH_SHORT).show();
+                        edUser.setText("");
+                        edHoTen.setText("");
+                        edPass.setText("");
+                        edRePass.setText("");
+                    }else {
+                        Toast.makeText(getActivity(),"Thêm thất bại",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+        return v;
+    }
+    private int validate(){
+        int check = 1;
+        if (edUser.getText().length() == 0 || edHoTen.getText().length() == 0 || edPass.getText().length() == 0 ||
+                edRePass.getText().length() == 0){
+            Toast.makeText(getContext(),"Bạn phải nhập đủ thông tin",Toast.LENGTH_SHORT).show();
+            check = -1;
+        }
+        else {
+            String pass = edPass.getText().toString();
+            String rePass = edRePass.getText().toString();
+            if (!pass.equals(rePass)){
+                Toast.makeText(getContext(),"Mật khẩu không trùng khớp",Toast.LENGTH_SHORT).show();
+                check = -1;
+            }
+        }
+        return check;
     }
 }
