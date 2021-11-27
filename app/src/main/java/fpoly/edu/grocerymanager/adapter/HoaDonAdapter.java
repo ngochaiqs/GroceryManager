@@ -56,9 +56,9 @@ public class HoaDonAdapter extends ArrayAdapter<HoaDon> {
                 hangDAO = new HangDAO(context);
                 Hang hang = hangDAO.getID(String.valueOf(item.getMaHang()));
                 tvTenHang = v.findViewById(R.id.tvTenHang);
-                tvTenHang.setText("Tên hàng: "+hang.getTenHang());
+                tvTenHang.setText(""+hang.getTenHang());
                 tvTongTien = v.findViewById(R.id.tvTongTien);
-                tvTongTien.setText("Tổng tiền: "+item.getTongTien());
+                tvTongTien.setText("Tổng tiền: "+item.getTongTien()+" VNĐ");
                 tvNgayLap = v.findViewById(R.id.tvNgayHD);
                 Log.i("//===============","Ngày lập:"+item.getNgayLap());
                 tvNgayLap.setText("Ngày lập: "+sdf.format(item.getNgayLap()));

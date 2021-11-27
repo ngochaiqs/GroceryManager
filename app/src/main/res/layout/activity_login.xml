@@ -35,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:background="@drawable/bo_tron"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -50,6 +51,7 @@
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
             android:layout_marginBottom="20sp"
+            android:background="@drawable/bo_tron"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -79,9 +81,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnLogin"
-                android:backgroundTint="#F6F5F5"
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
+                android:textColor="@color/white"
+                android:background="@drawable/bo_tron_button"
                 android:text="Đăng nhập"/>
 
             <Button
@@ -90,7 +93,8 @@
                 android:id="@+id/btnCanel"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:backgroundTint="#F6F5F5"
+                android:textColor="@color/white"
+                android:background="@drawable/bo_tron_button"
                 android:text="Hủy"/>
 
         </LinearLayout>

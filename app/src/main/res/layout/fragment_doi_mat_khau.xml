@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="true"
-        android:background="@drawable/et_bg1"
+        android:background="@drawable/bo_tron"
         android:layout_marginBottom="20sp">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="true"
-        android:background="@drawable/et_bg1"
+        android:background="@drawable/bo_tron"
         android:layout_marginBottom="20dp">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="true"
-        android:background="@drawable/et_bg1"
+        android:background="@drawable/bo_tron"
         android:layout_marginBottom="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -75,29 +75,27 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnSaveUserChange"
-            android:background="@drawable/btn_bg1"
-            android:backgroundTint="#E6DFDF"
             android:text="Lưu"
-            android:textSize="20dp"
-            android:padding="10dp"
+            android:textSize="16dp"
             android:layout_weight="1"
-            android:layout_marginRight="10dp"
-            android:drawableStart="@drawable/ic_save1"/>
+            android:layout_marginHorizontal="20dp"
+            android:textColor="@color/white"
+            android:background="@drawable/bo_tron_button"
+            android:drawableStart="@drawable/outline_save_white_24"/>
 
         <Button
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnCancelUserChange"
-            android:background="@drawable/btn_bg1"
-            android:backgroundTint="#E6DFDF"
-            android:padding="10dp"
-            android:layout_marginLeft="10dp"
-            android:drawableStart="@drawable/ic_cancel1"
+            android:drawableStart="@drawable/outline_cancel_white_24"
             android:text="Hủy"
-            android:textSize="20dp"
+            android:textSize="16dp"
+            android:layout_marginHorizontal="20dp"
+            android:textColor="@color/white"
+            android:background="@drawable/bo_tron_button"
             android:layout_weight="1"
             />
     </LinearLayout>

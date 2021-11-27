@@ -35,39 +35,28 @@ public class DoanhThuFragment extends Fragment {
         edTuNgay = view.findViewById(R.id.edTuNgay);
         edDenNgay = view.findViewById(R.id.edDenNgay);
         tvDoanhThu = view.findViewById(R.id.tvDoanhThu);
-        btnTuNgay = view.findViewById(R.id.btnTuNgay);
-        btnDenNgay = view.findViewById(R.id.btnDenNgay);
         btnDoanhThu = view.findViewById(R.id.btnDoanhThu);
 
-        //set sự kiện khi click vào button từ ngày
-        btnTuNgay.setOnClickListener(new View.OnClickListener() {
+        edTuNgay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //lấy thời gian của máy tính
                 Calendar calendar = Calendar.getInstance();
                 mYear = calendar.get(Calendar.YEAR);
                 mMonth = calendar.get(Calendar.MONTH);
                 mDay = calendar.get(Calendar.DAY_OF_MONTH);
-                //khởi tạo một diglog cho người dùng chọn ngày tháng năm
                 DatePickerDialog dialog = new DatePickerDialog(getActivity(), 0, mDateTuNgay, mYear, mMonth, mDay);
-                //hiển thị dialog
                 dialog.show();
             }
         });
 
-        btnDenNgay.setOnClickListener(new View.OnClickListener() {
+        edDenNgay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //lấy thời gian của máy tính
                 Calendar calendar = Calendar.getInstance();
                 mYear = calendar.get(Calendar.YEAR);
                 mMonth = calendar.get(Calendar.MONTH);
                 mDay = calendar.get(Calendar.DAY_OF_MONTH);
-
-                //khởi tạo một diglog cho người dùng chọn ngày tháng năm
                 DatePickerDialog dialog = new DatePickerDialog(getActivity(), 0, mDateDenNgay, mYear, mMonth, mDay);
-
-                //hiển thị dialog
                 dialog.show();
             }
         });

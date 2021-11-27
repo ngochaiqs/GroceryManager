@@ -56,7 +56,7 @@ public class HangAdapter extends ArrayAdapter<Hang> {
             //tvMaHang.setText("Mã hàng: "+item.getMaHang());
 
             tvTenHang = v.findViewById(R.id.tvTenHang);
-            tvTenHang.setText("Tên hàng: "+item.getTenHang());
+            tvTenHang.setText(""+item.getTenHang());
             tvGia = v.findViewById(R.id.tvGia);
             tvGia.setText("Giá mua: "+item.getGia()+" VNĐ");
             tvLoai = v.findViewById(R.id.tvLoai);

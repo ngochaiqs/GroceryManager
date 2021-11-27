@@ -115,7 +115,7 @@ public class HangFragment extends Fragment {
     public void xoa(final String Id){
         //sư dụng alert
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Delete");
+        builder.setTitle("Xoá hàng hoá");
         builder.setMessage("Bạn muốn xóa không");
         builder.setCancelable(true);
 
@@ -212,9 +212,9 @@ public class HangFragment extends Fragment {
                         //type = 1(update)
                         item.setMaHang(Integer.valueOf(edMaHang.getText().toString()));
                         if (hangDAO.update(item)>0){
-                            Toast.makeText(context,"Sửa thành công",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context,"Cập nhật thành công",Toast.LENGTH_SHORT).show();
                         }else {
-                            Toast.makeText(context,"Sửa thất bại",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context,"Cập nhật thất bại",Toast.LENGTH_SHORT).show();
                         }
 
                     }

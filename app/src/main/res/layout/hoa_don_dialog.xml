@@ -6,41 +6,44 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="1dp"
         android:id="@+id/edMaHD"
-        android:hint="Mã hoá đơn:"
-        android:layout_marginTop="50dp"
+
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"/>
     <Spinner
+        android:background="@drawable/bo_tron"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spMaHang"
         android:layout_marginBottom="20dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="5dp"/>
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
     <TextView
+        android:background="@drawable/bo_tron"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvNgay"
         android:text="Ngày:"
         android:layout_marginBottom="20dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="5dp"/>
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
     <TextView
+        android:background="@drawable/bo_tron"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvTongTien"
         android:text="Tổng tiền:"
         android:layout_marginBottom="20dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="5dp"/>
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/chkTrangThai"
-        android:text="Đã thanh toán:"
+        android:text="Đã thanh toán tiền mặt"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="5dp"/>
@@ -54,17 +57,21 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnSaveHD"
             android:text="Lưu"
-            android:drawableStart="@drawable/outline_save_black_24"
+            android:drawableStart="@drawable/outline_save_white_24"
             android:layout_marginHorizontal="20dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:background="@drawable/bo_tron_button"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnCancelHD"
             android:text="Hủy"
-            android:drawableStart="@drawable/outline_cancel_black_24"
+            android:drawableStart="@drawable/outline_cancel_white_24"
             android:layout_marginHorizontal="20dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:background="@drawable/bo_tron_button"/>
 
     </LinearLayout>
 

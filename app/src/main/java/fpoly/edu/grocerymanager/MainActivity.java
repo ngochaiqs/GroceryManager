@@ -23,7 +23,6 @@ import fpoly.edu.grocerymanager.fragment.DoiMatKhauFragment;
 import fpoly.edu.grocerymanager.fragment.HangFragment;
 import fpoly.edu.grocerymanager.fragment.LoaiHangFragment;
 import fpoly.edu.grocerymanager.fragment.QuanLyHoaDonFragment;
-import fpoly.edu.grocerymanager.fragment.TimKiemFragment;
 import fpoly.edu.grocerymanager.fragment.TopFragment;
 import fpoly.edu.grocerymanager.model.NguoiDung;
 
@@ -99,13 +98,13 @@ public class MainActivity extends AppCompatActivity {
                                     .replace(R.id.flContent, hangFragment).commit();
 
                             break;
-                        case R.id.nav_TimKiem:
-                            setTitle("Tìm kiếm");
-                            TimKiemFragment timKiemFragment = new TimKiemFragment();
-                            manager.beginTransaction().replace(R.id.flContent, timKiemFragment)
-                                    .commit();
-
-                            break;
+//                        case R.id.nav_TimKiem:
+//                            setTitle("Tìm kiếm");
+//                            TimKiemFragment timKiemFragment = new TimKiemFragment();
+//                            manager.beginTransaction().replace(R.id.flContent, timKiemFragment)
+//                                    .commit();
+//
+//                            break;
                         case R.id.sub_Top:
                             setTitle("Top 10 hàng hoá được mua nhiều nhất");
                             TopFragment topFragment = new TopFragment();

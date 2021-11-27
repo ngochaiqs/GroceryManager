@@ -71,7 +71,7 @@ public class LoaiHangFragment extends Fragment {
     }
     public void xoa(final String Id){
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Delete");
+        builder.setTitle("Xoá loại hàng");
         builder.setMessage("Bạn có muốn xóa không");
         builder.setCancelable(true);
         builder.setPositiveButton("Có",
@@ -133,9 +133,9 @@ public class LoaiHangFragment extends Fragment {
                         //type = 1(update)
                         item.setMaLoai(Integer.parseInt(edMaLoaiHang.getText().toString()));
                         if (dao.update(item)>0) {
-                            Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
                         }
                     }
                     capNhapLv();

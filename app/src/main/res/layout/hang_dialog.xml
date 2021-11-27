@@ -4,27 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.textfield.TextInputLayout
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/edMaHang"
-            android:hint="Mã Hàng Hoá"/>
+        android:layout_height="1dp"
+        android:id="@+id/edMaHang"
 
-    </com.google.android.material.textfield.TextInputLayout>
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"/>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:background="@drawable/bo_tron"
         >
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -38,14 +33,16 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginRight="20dp"
+        android:background="@drawable/bo_tron">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edGiaHang"
-            android:hint="Gía Hàng"/>
+            android:hint="Giá Hàng (VND)"/>
     </com.google.android.material.textfield.TextInputLayout>
     <Spinner
+        android:background="@drawable/bo_tron"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spLoaiHang"
@@ -63,17 +60,21 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnSaveHang"
             android:text="Lưu"
-            android:drawableStart="@drawable/outline_save_black_24"
+            android:drawableStart="@drawable/outline_save_white_24"
             android:layout_marginHorizontal="20dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:background="@drawable/bo_tron_button"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnCancelHang"
             android:text="Hủy"
-            android:drawableStart="@drawable/outline_cancel_black_24"
+            android:drawableStart="@drawable/outline_cancel_white_24"
             android:layout_marginHorizontal="20dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:background="@drawable/bo_tron_button"/>
     </LinearLayout>
 
 </LinearLayout>

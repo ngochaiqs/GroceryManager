@@ -117,8 +117,8 @@ public class QuanLyHoaDonFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 maHang = listHang.get(position).getMaHang();
                 tongTien = listHang.get(position).getGia();
-                tvTongTien.setText("Tổng tiền: "+tongTien);
-                //       Toast.makeText(context,"Chọn:"+listSach.get(position).getTenSach(),Toast.LENGTH_SHORT).show();
+                tvTongTien.setText("Tổng tiền: "+tongTien+" VNĐ");
+                       Toast.makeText(context,"Chọn:"+listHang.get(position).getTenHang(),Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -143,7 +143,7 @@ public class QuanLyHoaDonFragment extends Fragment {
             spHang.setSelection(positionHang);
 
             tvNgayLap.setText("Ngày lập: "+sdf.format(item.getNgayLap()));
-            tvTongTien.setText("Tổng tiền: "+item.getTongTien());
+            tvTongTien.setText("Tổng tiền: "+item.getTongTien()+" VNĐ");
             if (item.getTrangThai() == 1){
                 chkTrangThai.setChecked(true);
             }else {
@@ -181,9 +181,9 @@ public class QuanLyHoaDonFragment extends Fragment {
                     //type = 1(update)
                     item.setMaHD(Integer.parseInt(edMaHD.getText().toString()));
                     if (dao.update(item) > 0){
-                        Toast.makeText(context,"Sửa thành công",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context,"Cập nhật thành công",Toast.LENGTH_SHORT).show();
                     }else {
-                        Toast.makeText(context,"Sửa thất bại",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context,"Cập nhật thất bại",Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -198,7 +198,7 @@ public class QuanLyHoaDonFragment extends Fragment {
     public void xoa(String Id){
         //sử dụng Alert
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Delete");
+        builder.setTitle("Xoá đơn hàng");
         builder.setMessage("Bạn có muốn xóa không");
         builder.setCancelable(true);
 
