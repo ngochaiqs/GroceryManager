@@ -21,7 +21,6 @@ public class LoaiHangDAO {
     }
     public long insert(LoaiHang obj){
         ContentValues values = new ContentValues();
-        values.put("maLoai", obj.getMaLoai());
         values.put("tenLoai", obj.getTenLoai());
         return db.insert("LoaiHang",null, values);
     }
