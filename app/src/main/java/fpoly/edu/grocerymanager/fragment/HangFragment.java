@@ -32,6 +32,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -59,6 +60,7 @@ public class HangFragment extends Fragment {
     Button btnSave, btnCancel;
     ImageButton imgCamera, imgUpload, imgTimKiem;
     ImageView imgSanPham;
+    TextInputLayout tilTenHang, tilGiaHang;
 
     DbHelper db;
     HangAdapter adapter;
@@ -185,6 +187,8 @@ public class HangFragment extends Fragment {
         imgCamera = dialog.findViewById(R.id.imgCamera);
         imgUpload = dialog.findViewById(R.id.imgUpload);
         imgSanPham = dialog.findViewById(R.id.imgSanPham);
+        tilTenHang = dialog.findViewById(R.id.tilTenHang);
+        tilGiaHang = dialog.findViewById(R.id.tilGiaHang);
 
         listLoaiHang = new ArrayList<LoaiHang>();
         loaiHangDAO = new LoaiHangDAO(context);
@@ -315,6 +319,8 @@ public class HangFragment extends Fragment {
     public int validate(){
         int check = 1;
         if (edTenHang.getText().length()==0 || edGiaThue.getText().length()==0) {
+            tilTenHang.setError("Tên hàng trống!");
+            tilGiaHang.setError("Giá hàng trống!");
             Toast.makeText(getContext(), "Bạn phải nhập đủ thông tin", Toast.LENGTH_SHORT).show();
             check = -1;
         }

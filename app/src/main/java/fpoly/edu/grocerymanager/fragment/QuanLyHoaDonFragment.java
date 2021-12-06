@@ -118,7 +118,7 @@ public class QuanLyHoaDonFragment extends Fragment {
                 maHang = listHang.get(position).getMaHang();
                 tongTien = listHang.get(position).getGia();
                 tvTongTien.setText("Tổng tiền: "+tongTien+" VNĐ");
-                       Toast.makeText(context,"Chọn:"+listHang.get(position).getTenHang(),Toast.LENGTH_SHORT).show();
+                       Toast.makeText(context,"Chọn: "+listHang.get(position).getTenHang(),Toast.LENGTH_SHORT).show();
             }
 
             @Override

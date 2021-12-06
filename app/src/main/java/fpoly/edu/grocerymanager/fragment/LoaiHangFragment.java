@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,7 @@ public class LoaiHangFragment extends Fragment {
     static LoaiHangDAO dao;
     LoaiHang item;
     FloatingActionButton fab;
+    TextInputLayout tilTenLoaiHang;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -103,6 +105,7 @@ public class LoaiHangFragment extends Fragment {
         edTenLoaiHang = dialog.findViewById(R.id.edTenLoaiHang);
         btnCancel = dialog.findViewById(R.id.btnCancelLoaiHang);
         btnSave = dialog.findViewById(R.id.btnSaveLoaiHang);
+        tilTenLoaiHang = dialog.findViewById(R.id.tilTenLoaiHang);
 
         if (type != 0){
             edMaLoaiHang.setText(String.valueOf(item.getMaLoai()));
@@ -149,6 +152,7 @@ public class LoaiHangFragment extends Fragment {
     public int validate(){
         int check = 1;
         if (edTenLoaiHang.getText().length() ==0 ){
+            tilTenLoaiHang.setError("Tên loại hàng trống!");
             Toast.makeText(getContext(),"Bạn phải nhập đủ thông tin",Toast.LENGTH_SHORT).show();
             check = -1;
         }
