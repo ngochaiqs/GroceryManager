@@ -3,6 +3,8 @@ package fpoly.edu.grocerymanager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -11,20 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import fpoly.edu.grocerymanager.dao.NguoiDungDAO;
-
-import fpoly.edu.grocerymanager.dao.NguoiDungDAO;
+import com.google.android.material.textfield.TextInputLayout;
 
 import fpoly.edu.grocerymanager.dao.NguoiDungDAO;
 
@@ -34,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     CheckBox chkRememberPass;
     String strUser, strPass;
     NguoiDungDAO dao;
+    TextInputLayout tilUserName, tilPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         btnCancel = findViewById(R.id.btnCanel);
         btnLogin = findViewById(R.id.btnLogin);
         chkRememberPass = findViewById(R.id.chkRememberPass);
+        tilUserName = findViewById(R.id.tilUserName);
+        tilPass = findViewById(R.id.tilPass);
         dao = new NguoiDungDAO(this);
 
         //đọc user, pass trong SharedPreferences
@@ -56,6 +48,50 @@ public class LoginActivity extends AppCompatActivity {
         edUserName.setText(user);
         edPassword.setText(pass);
         chkRememberPass.setChecked(rem);
+
+        edUserName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (s.length() > tilUserName.getCounterMaxLength())
+                    tilUserName.setError("Ký tự tối đa của tên đăng nhập là " + tilUserName.getCounterMaxLength());
+                else
+                    tilUserName.setError(null);
+
+            }
+        });
+
+        edPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (s.length() > tilPass.getCounterMaxLength())
+                    tilPass.setError("Ký tự tối đa của mật khẩu là " + tilPass.getCounterMaxLength());
+                else
+                    tilPass.setError(null);
+
+            }
+        });
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +128,8 @@ public class LoginActivity extends AppCompatActivity {
         strUser = edUserName.getText().toString();
         strPass = edPassword.getText().toString();
         if (strUser.isEmpty()||strPass.isEmpty()){
+            tilUserName.setError("Tên đăng nhập trống!");
+            tilPass.setError("Mật khẩu trống!");
             Toast.makeText(getApplicationContext(),"Tên đăng nhập và mật khẩu không được bỏ trống",
                     Toast.LENGTH_SHORT).show();
 

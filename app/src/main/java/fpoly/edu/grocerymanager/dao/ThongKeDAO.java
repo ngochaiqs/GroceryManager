@@ -5,12 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fpoly.edu.grocerymanager.database.DbHelper;
 import fpoly.edu.grocerymanager.model.Hang;
 import fpoly.edu.grocerymanager.model.Top;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ThongKeDAO {
     private SQLiteDatabase db;
@@ -40,6 +40,8 @@ public class ThongKeDAO {
         }
         return list;
     }
+
+
 
     // Thống kê doanh thu
     @SuppressLint("Range")

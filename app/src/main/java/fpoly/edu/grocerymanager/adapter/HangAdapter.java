@@ -1,6 +1,8 @@
 package fpoly.edu.grocerymanager.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +28,7 @@ public class HangAdapter extends ArrayAdapter<Hang> {
     HangFragment fragment;
     List<Hang> list;
     TextView tvMaHang, tvTenHang, tvGia, tvLoai;
-    ImageView imgDel;
+    ImageView imgHinhAnh, imgDel;
 
     public HangAdapter(@NonNull Context context, HangFragment fragment, List<Hang> list) {
         super(context, 0,list);
@@ -35,6 +37,7 @@ public class HangAdapter extends ArrayAdapter<Hang> {
         this.list = list;
 
     }
+
 
     @NonNull
     @Override
@@ -61,6 +64,12 @@ public class HangAdapter extends ArrayAdapter<Hang> {
             tvGia.setText("Giá mua: "+item.getGia()+" VNĐ");
             tvLoai = v.findViewById(R.id.tvLoai);
             tvLoai.setText("Loại hàng: "+loaiHang.getTenLoai());
+            imgHinhAnh = v.findViewById(R.id.imgHinhAnh);
+            //chuyen byte sang bitmap
+            byte[] hinhAnh = item.getHinhAnh();
+            Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh, 0, hinhAnh.length);
+            imgHinhAnh.setImageBitmap(bitmap);
+            v.setTag(convertView);
 
             imgDel=v.findViewById(R.id.imgDeleteLS);
         }

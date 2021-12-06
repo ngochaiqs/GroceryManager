@@ -18,10 +18,11 @@ public class Data_SQLite {
             "INSERT INTO LoaiHang (tenLoai) values\n" +
                     "('Đồ Gia Dụng'),\n" +
                     "('Đồ Thực Phẩm')";
-    public static final String INSERT_HANG =
-            "INSERT INTO Hang(gia, tenHang, maLoai) values \n" +
-                    "('45000','Nước Mắm Nam Ngư','1'),\n" +
-                    "('65000','Dầu ăn Neptune','1')";
+//    public static final String INSERT_HANG =
+//            "INSERT INTO Hang(gia, tenHang, maLoai) values \n" +
+//                    "('45000','Nước Mắm Nam Ngư','1'),\n" +
+//                    "('65000','Dầu ăn Neptune','1')";
+
     public static final String INSERT_HOA_DON =
             "INSERT INTO HoaDon(mahang, maND,tongTien,ngayLap,trangThai) values\n" +
                     "('2','NgocHai',' 130000','2021/10/10',0),\n" +

@@ -32,14 +32,21 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilUserName"
+            app:errorEnabled="true"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:background="@drawable/bo_tron"
             >
 
+
             <com.google.android.material.textfield.TextInputEditText
+                android:drawablePadding="10dp"
                 android:id="@+id/edUserName"
+                android:drawableStart="@drawable/outline_account_circle_black_24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -47,6 +54,10 @@
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPass"
+            app:errorEnabled="true"
+            app:counterEnabled="true"
+            app:counterMaxLength="15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
@@ -58,7 +69,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/edPassword"
                 android:textStyle="bold"
-
+                android:drawableStart="@drawable/outline_password_black_24"
+                android:drawablePadding="10dp"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:hint="Mật khẩu"/>

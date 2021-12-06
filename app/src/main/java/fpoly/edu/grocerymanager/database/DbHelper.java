@@ -1,6 +1,7 @@
 package fpoly.edu.grocerymanager.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -26,7 +27,8 @@ public class DbHelper extends SQLiteOpenHelper {
                     "maHang  INTEGER PRIMARY KEY AUTOINCREMENT,"+
                     "tenHang TEXT    NOT NULL,"     +
                     "gia INTEGER NOT NULL,"    +
-                    "maLoai  INTEGER REFERENCES LoaiHang (maloai)) ";
+                    "maLoai  INTEGER REFERENCES LoaiHang (maloai), " +
+                    "hinhAnh BLOB)";
     //
     static final String CREATE_TABLE_HOA_DON =
             "create table HoaDon ("  +
@@ -63,13 +65,13 @@ public class DbHelper extends SQLiteOpenHelper {
 
         //Thêm dữ liệu Người dùng
         db.execSQL(Data_SQLite.INSERT_NGUOI_DUNG);
-//        //Thêm dữ liệu Loại hàng
-//        db.execSQL(Data_SQLite.INSERT_LOAI_HANG);
-//        //Thêm dữ liệu Hàng
+        //Thêm dữ liệu Loại hàng
+        db.execSQL(Data_SQLite.INSERT_LOAI_HANG);
+        //Thêm dữ liệu Hàng
 //        db.execSQL(Data_SQLite.INSERT_HANG);
-//        //Thêm dữ liệu Hoá đơn
-//        db.execSQL(Data_SQLite.INSERT_HOA_DON);
-//        //Thêm dữ liệu Hoá đơn chi tiết
+        //Thêm dữ liệu Hoá đơn
+        db.execSQL(Data_SQLite.INSERT_HOA_DON);
+        //Thêm dữ liệu Hoá đơn chi tiết
 //        db.execSQL(Data_SQLite.INSERT_HOA_DON_CHI_TIET);
 
     }
@@ -89,5 +91,16 @@ public class DbHelper extends SQLiteOpenHelper {
 
         onCreate(db);
 
+    }
+    public void TruyVanKhongTraVe(String sql)
+    {
+        SQLiteDatabase db=getWritableDatabase();
+        db.execSQL(sql);
+    }
+
+    public Cursor TruyVanTraVe(String sql)
+    {
+        SQLiteDatabase db=getWritableDatabase();
+        return db.rawQuery(sql, null);
     }
 }
