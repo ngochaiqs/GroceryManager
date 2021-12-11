@@ -44,7 +44,7 @@ public class LoaiHangAdapter extends ArrayAdapter<LoaiHang> {
             //tvMaLoaiHang = v.findViewById(R.id.tvMaLoaiHang);
            // tvMaLoaiHang.setText("Mã loại: "+item.getMaLoai());
             tvTenLoaiHang = v.findViewById(R.id.tvTenLoaiHang);
-            tvTenLoaiHang.setText("Tên loại: "+item.getTenLoai());
+            tvTenLoaiHang.setText(""+item.getTenLoai());
             imgDel = v.findViewById(R.id.imgDeleteLS);
 
         }

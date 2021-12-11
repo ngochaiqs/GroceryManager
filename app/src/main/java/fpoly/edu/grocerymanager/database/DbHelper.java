@@ -1,7 +1,6 @@
 package fpoly.edu.grocerymanager.database;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -70,7 +69,7 @@ public class DbHelper extends SQLiteOpenHelper {
         //Thêm dữ liệu Hàng
 //        db.execSQL(Data_SQLite.INSERT_HANG);
         //Thêm dữ liệu Hoá đơn
-        db.execSQL(Data_SQLite.INSERT_HOA_DON);
+//        db.execSQL(Data_SQLite.INSERT_HOA_DON);
         //Thêm dữ liệu Hoá đơn chi tiết
 //        db.execSQL(Data_SQLite.INSERT_HOA_DON_CHI_TIET);
 
@@ -91,16 +90,5 @@ public class DbHelper extends SQLiteOpenHelper {
 
         onCreate(db);
 
-    }
-    public void TruyVanKhongTraVe(String sql)
-    {
-        SQLiteDatabase db=getWritableDatabase();
-        db.execSQL(sql);
-    }
-
-    public Cursor TruyVanTraVe(String sql)
-    {
-        SQLiteDatabase db=getWritableDatabase();
-        return db.rawQuery(sql, null);
     }
 }

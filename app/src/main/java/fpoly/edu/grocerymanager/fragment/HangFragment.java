@@ -66,12 +66,10 @@ public class HangFragment extends Fragment {
     HangAdapter adapter;
     Hang item;
     List<Hang> list;
-    List<Hang> listTimKiem;
 
     LoaiHangSpinnerAdapter spinnerAdapter;
     ArrayList<LoaiHang> listLoaiHang;
     LoaiHangDAO loaiHangDAO;
-    LoaiHang loaiHang;
     int maLoaiHang, position;
 
     final int REQUEST_CODE_CAMERA = 123;
@@ -275,43 +273,6 @@ public class HangFragment extends Fragment {
                     capNhatLv();
                     dialog.dismiss();
                 }
-
-
-//                hangDAO.INSERT_SP(edTenHang.getText().toString().trim(),
-//                        Integer.parseInt(edGiaThue.getText().toString().trim()),
-//                        Integer.valueOf(String.valueOf(maLoaiHang)), hinhAnh);
-
-//                Toast.makeText(context,"Thêm thành công",Toast.LENGTH_SHORT).show();
-//                capNhatLv();
-//                dialog.dismiss();
-
-//                item = new Hang();
-//                item.setTenHang(edTenHang.getText().toString());
-//                item.setGia(Integer.parseInt(edGiaThue.getText().toString()));
-//                item.setMaLoai(Integer.valueOf(String.valueOf(maLoaiHang)));
-//                item.setHinhAnh(hinhAnh);
-//                if (validate()>0){
-//                    if (type==0){
-//                        //type = 0 (insert)
-//                        if (hangDAO.insert(item)>0){
-//                            Toast.makeText(context,"Thêm thành công",Toast.LENGTH_SHORT).show();
-//                        }else {
-//                            Toast.makeText(context,"Thêm thất bại",Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    }else {
-//                        //type = 1(update)
-//                        item.setMaHang(Integer.valueOf(edMaHang.getText().toString()));
-//                        if (hangDAO.update(item)>0){
-//                            Toast.makeText(context,"Cập nhật thành công",Toast.LENGTH_SHORT).show();
-//                        }else {
-//                            Toast.makeText(context,"Cập nhật thất bại",Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    }
-//                    capNhatLv();
-//                    dialog.dismiss();
-//                }
             }
         });
         dialog.show();

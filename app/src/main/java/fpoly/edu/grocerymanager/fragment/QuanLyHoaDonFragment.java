@@ -129,13 +129,6 @@ public class QuanLyHoaDonFragment extends Fragment {
         //edit set data lên form
         if (type != 0){
             edMaHD.setText(String.valueOf(item.getMaHD()));
-
-//            for (int i = 0; i < listThanhVien.size(); i++)
-//                if (item.getMaTV() == (listThanhVien.get(i).getMaTV())){
-//                    positionTV = i;
-//                }
-//            spTV.setSelection(positionTV);
-
             for (int i = 0 ; i < listHang.size(); i++)
                 if (item.getMaHang() == (listHang.get(i).getMaHang())){
                     positionHang = i;

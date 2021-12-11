@@ -19,15 +19,7 @@ public class HangDAO {
         DbHelper dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
-//    public long insert(Hang obj){
-//        ContentValues values = new ContentValues();
-//        values.put("tenHang",obj.getTenHang());
-//        values.put("gia",obj.getGia());
-//        values.put("maLoai", obj.getMaLoai());
-//
-//
-//        return db.insert("Hang",null, values);
-//    }
+
     public void INSERT_SP(String tenHang, Integer gia, Integer maLoai, byte[] hinhAnh){
         String sql = "INSERT INTO Hang VALUES(null, ?, ? , ?, ?)";
         SQLiteStatement statement = db.compileStatement(sql);
@@ -72,15 +64,6 @@ public class HangDAO {
         return list;
     }
 
-//    public int update(Hang obj){
-//        ContentValues values = new ContentValues();
-//        values.put("tenHang",obj.getTenHang());
-//        values.put("gia",obj.getGia());
-//        values.put("maLoai",obj.getMaLoai());
-//
-//        return db.update("Hang",values,"maHang=?",new String[]{String.valueOf(obj.getMaHang())});
-//
-//    }
     public int delete(String id){
         return db.delete("Hang","maHang=?", new String[]{id});
     }
@@ -91,12 +74,6 @@ public class HangDAO {
         List<Hang> list = new ArrayList<Hang>();
         Cursor c = db.rawQuery(sql, selectionArgs);
         while (c.moveToNext()){
-//            Hang obj = new Hang();
-//           obj.setMaHang(Integer.valueOf(c.getString(c.getColumnIndex("maHang"))));
-//           obj.setGia(Integer.parseInt(c.getString(c.getColumnIndex("gia"))));
-//           obj.setTenHang(c.getString(c.getColumnIndex("tenHang")));
-//           obj.setMaLoai(Integer.valueOf(c.getString(c.getColumnIndex("maLoai"))));
-            //list.add(obj);
             list.add(new Hang(Integer.valueOf(c.getInt(0)),
                     c.getString(1),
                     Integer.parseInt(String.valueOf(c.getInt(2))),
