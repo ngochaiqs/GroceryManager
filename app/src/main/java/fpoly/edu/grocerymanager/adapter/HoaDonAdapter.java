@@ -22,7 +22,6 @@ import fpoly.edu.grocerymanager.dao.NguoiDungDAO;
 import fpoly.edu.grocerymanager.fragment.QuanLyHoaDonFragment;
 import fpoly.edu.grocerymanager.model.Hang;
 import fpoly.edu.grocerymanager.model.HoaDon;
-import fpoly.edu.grocerymanager.model.NguoiDung;
 
 public class HoaDonAdapter extends ArrayAdapter<HoaDon> {
     private Context context;
@@ -60,11 +59,6 @@ public class HoaDonAdapter extends ArrayAdapter<HoaDon> {
                 Hang hang = hangDAO.getID(String.valueOf(item.getMaHang()));
                 tvTenHang = v.findViewById(R.id.tvTenHang);
                 tvTenHang.setText(""+hang.getTenHang());
-
-                nguoiDungDAO = new NguoiDungDAO(context);
-                NguoiDung nguoiDung = nguoiDungDAO.getID(item.getMaND());
-                tvTenND = v.findViewById(R.id.tvTenND);
-                tvTenND.setText(""+nguoiDung.getHoTen());
 
                 tvTongTien = v.findViewById(R.id.tvTongTien);
                 tvTongTien.setText("Tổng tiền: "+item.getTongTien()+" VNĐ");
