@@ -87,7 +87,7 @@ public class HangFragment extends Fragment {
         hangDAO = new HangDAO(getActivity());
         capNhatLv();
         fab = v.findViewById(R.id.fab);
-
+        //Xử lý nút fab thêm mới
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,6 +95,7 @@ public class HangFragment extends Fragment {
 
             }
         });
+        //Nhấn giữ item
         lvHang.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -104,7 +105,7 @@ public class HangFragment extends Fragment {
             }
         });//nhấn và giữ
 
-
+        //Xử lý imagebutton tìm kiếm
         imgTimKiem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,12 +126,13 @@ public class HangFragment extends Fragment {
         });
         return v;
     }
+    //Xử lý đổ dữ liệu tìm kiếm lên listview
     void TimKiem(){
         adapter = new HangAdapter(getActivity(), HangFragment.this, list);
         lvHang.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
-
+    //Đổ dữ liệu lên lisview
     void capNhatLv(){
         list = (List<Hang>) hangDAO.getAll();
         adapter = new HangAdapter(getActivity(),this, list);
@@ -141,12 +143,12 @@ public class HangFragment extends Fragment {
 
 
 
-
+    //Xử lý nút xoá
     public void xoa(final String Id){
         //sư dụng alert
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Xoá hàng hoá");
-        builder.setMessage("Bạn muốn xóa không");
+        builder.setMessage("Bạn muốn xóa hàng hoá này không?");
         builder.setCancelable(true);
 
         builder.setPositiveButton("Có",
@@ -208,7 +210,7 @@ public class HangFragment extends Fragment {
 
             }
         });
-        // thêm ảnh
+        // xử lý img thêm ảnh bằng camera
         imgCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -217,7 +219,7 @@ public class HangFragment extends Fragment {
                 //ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_CAMERA);
             }
         });
-
+        //Thêm ảnh từ bộ nhớ máy ảo
         imgUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -241,12 +243,14 @@ public class HangFragment extends Fragment {
             Log.i("demo","posHang "+position);
             spinner.setSelection(position);
         }
+        //Xử lý nút huỷ
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
             }
         });
+        //Xử lý nút lưu
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -277,6 +281,7 @@ public class HangFragment extends Fragment {
         });
         dialog.show();
     }
+    //Kiểm tra tính hợp lệ
     public int validate(){
         int check = 1;
         if (edTenHang.getText().length()==0 || edGiaThue.getText().length()==0) {
@@ -288,7 +293,7 @@ public class HangFragment extends Fragment {
         return check;
     }
 
-
+    //Xử lý hiện thị ảnh
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK && data != null){
@@ -308,7 +313,7 @@ public class HangFragment extends Fragment {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-
+    //Xin cấp quyền
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 

@@ -79,6 +79,7 @@ public class HoaDonAdapter extends ArrayAdapter<HoaDon> {
             }
 
         }
+        //set sự kiện img xoá
         imgDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

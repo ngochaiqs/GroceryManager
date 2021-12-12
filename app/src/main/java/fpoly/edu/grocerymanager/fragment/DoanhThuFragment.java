@@ -36,7 +36,7 @@ public class DoanhThuFragment extends Fragment {
         edDenNgay = view.findViewById(R.id.edDenNgay);
         tvDoanhThu = view.findViewById(R.id.tvDoanhThu);
         btnDoanhThu = view.findViewById(R.id.btnDoanhThu);
-
+        //xử lý ed từ ngày
         edTuNgay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +48,7 @@ public class DoanhThuFragment extends Fragment {
                 dialog.show();
             }
         });
-
+        //xử lý ed đến ngày
         edDenNgay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +77,7 @@ public class DoanhThuFragment extends Fragment {
 
         return view;
     }
-    //phương thức tạo dialog cho người dùng chọn
+    //hiển thị dialog từ ngày cho người dùng chọn
     DatePickerDialog.OnDateSetListener mDateTuNgay = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -88,6 +88,7 @@ public class DoanhThuFragment extends Fragment {
             edTuNgay.setText(simpleDateFormat.format(calendar.getTime()));
         }
     };
+    //hiển thị dialog đến ngày cho người dùng chọn
     DatePickerDialog.OnDateSetListener mDateDenNgay = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {

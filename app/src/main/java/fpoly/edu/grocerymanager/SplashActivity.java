@@ -20,6 +20,6 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },2000);
+        },1500); //thời gian hiển thị màn hình chờ
     }
 }

@@ -71,6 +71,7 @@ public class AddUserFragment extends Fragment {
         });
         return v;
     }
+    //kiểm tra tính hợp lệ
     private int validate(){
         int check = 1;
         if (edUser.getText().length() == 0 || edHoTen.getText().length() == 0 || edPass.getText().length() == 0 ||

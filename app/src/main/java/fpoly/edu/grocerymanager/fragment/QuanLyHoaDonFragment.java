@@ -192,7 +192,7 @@ public class QuanLyHoaDonFragment extends Fragment {
         //sử dụng Alert
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Xoá đơn hàng");
-        builder.setMessage("Bạn có muốn xóa không");
+        builder.setMessage("Bạn có muốn xóa đơn hàng này không?");
         builder.setCancelable(true);
 
         builder.setPositiveButton("Có",

@@ -48,22 +48,6 @@ public class HangDAO {
 
     }
 
-    // Thống kê top 10
-    @SuppressLint("Range")
-    public List<Hang> getTim(){
-        String sqlTop = "SELECT * FROM Hang WHERE tenHang=?";
-        List<Hang> list = new ArrayList<Hang>();
-        Cursor c = db.rawQuery(sqlTop, null);
-        while (c.moveToNext()){
-            list.add(new Hang(Integer.valueOf(c.getInt(0)),
-                    c.getString(1),
-                    Integer.parseInt(String.valueOf(c.getInt(2))),
-                    Integer.valueOf(c.getString(3)),
-                    c.getBlob(4)));
-        }
-        return list;
-    }
-
     public int delete(String id){
         return db.delete("Hang","maHang=?", new String[]{id});
     }

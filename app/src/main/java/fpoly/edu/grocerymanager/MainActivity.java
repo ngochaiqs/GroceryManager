@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             ab.setDisplayHomeAsUpEnabled(true);
 
 
-
+            // đặt hiển thị mặc định là hàng frament
             FragmentManager manager = getSupportFragmentManager();
             HangFragment hangFragment = new HangFragment();
             manager.beginTransaction()
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             NguoiDung nguoiDung = nguoiDungDAO.getID(user);
             String username = nguoiDung.getHoTen();
                        edUser.setText("Xin chào "+username+" !");
-
+            //nếu đăng nhập bằng tài khoản admin thì hiển thị menu thêm người dùng
             if (user.equalsIgnoreCase("admin")){
                nv.getMenu().findItem(R.id.sub_Adduser).setVisible(true);
            }
@@ -98,13 +98,6 @@ public class MainActivity extends AppCompatActivity {
                                     .replace(R.id.flContent, hangFragment).commit();
 
                             break;
-//                        case R.id.nav_TimKiem:
-//                            setTitle("Tìm kiếm");
-//                            TimKiemFragment timKiemFragment = new TimKiemFragment();
-//                            manager.beginTransaction().replace(R.id.flContent, timKiemFragment)
-//                                    .commit();
-//
-//                            break;
                         case R.id.sub_Top:
                             setTitle("Top 10 hàng hoá được mua nhiều nhất");
                             TopFragment topFragment = new TopFragment();
@@ -152,25 +145,4 @@ public class MainActivity extends AppCompatActivity {
                 drawer.openDrawer(GravityCompat.START);
             return super.onOptionsItemSelected(item);
         }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.search_view,menu);
-//        MenuItem menuItem = menu.findItem(R.id.search);
-//        SearchView searchView = (SearchView) menuItem.getActionView();
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                adapter.getFilter().filter(query);
-//                menuItem.collapseActionView();
-//                return false;
-//            }
-//            @Override
-//            public boolean onQueryTextChange(String s) {
-//                // UserFeedback.show( "SearchOnQueryTextChanged: " + s);
-//                return false;
-//            }
-//        });
-//        return true;
-//    }
 }

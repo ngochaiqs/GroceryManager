@@ -44,7 +44,7 @@ public class TopAdapter extends ArrayAdapter<Top> {
         if (item != null) {
 
             tvSach = v.findViewById(R.id.tvHang);
-            tvSach.setText("Hàng: " + item.getTenHang());
+            tvSach.setText("Tên hàng: " + item.getTenHang());
 
             tvSoLuong = v.findViewById(R.id.tvSL);
             tvSoLuong.setText("Số lượng: " + item.getSoLuong());

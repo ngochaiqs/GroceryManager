@@ -48,6 +48,7 @@ public class LoaiHangAdapter extends ArrayAdapter<LoaiHang> {
             imgDel = v.findViewById(R.id.imgDeleteLS);
 
         }
+        //set sự kiện img xoá
         imgDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

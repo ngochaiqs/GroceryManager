@@ -76,6 +76,7 @@ public class DoiMatKhauFragment extends Fragment {
 
         return v;
     }
+    //kiểm tra tính hợp lệ
     public int validate(){
         int check = 1;
         if (edPassOld.getText().length()==0 || edPass.getText().length()==0 || edRepass.getText().length()==0){

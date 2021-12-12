@@ -109,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    //lưu tài khoản
     public void rememberUser(String u, String p, boolean status){
         SharedPreferences pref = getSharedPreferences("USER_FILE",MODE_PRIVATE);
         SharedPreferences.Editor edit = pref.edit();
@@ -124,9 +125,11 @@ public class LoginActivity extends AppCompatActivity {
         //lưu lại toàn bộ dữ liệu
         edit.commit();
     }
+    //set sự kiện nút đăng nhập
     public void checkLogin(){
         strUser = edUserName.getText().toString();
         strPass = edPassword.getText().toString();
+        //kiểm tra tính hợp lệ
         if (strUser.isEmpty()||strPass.isEmpty()){
             tilUserName.setError("Tên đăng nhập trống!");
             tilPass.setError("Mật khẩu trống!");

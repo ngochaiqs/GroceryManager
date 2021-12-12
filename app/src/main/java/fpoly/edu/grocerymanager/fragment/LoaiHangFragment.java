@@ -54,6 +54,7 @@ public class LoaiHangFragment extends Fragment {
 
             }
         });
+        //Xử lý nhấn giữ item
         lvLoaiHang.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -65,16 +66,18 @@ public class LoaiHangFragment extends Fragment {
         capNhapLv();
         return v;
     }
+    //Đổ dữ liệu lên listview
     void capNhapLv(){
         list =(ArrayList<LoaiHang>) dao.getAll();
         adapter = new LoaiHangAdapter(getActivity(),this,list);
         lvLoaiHang.setAdapter(adapter);
 
     }
+    //Xử lý nút xoá
     public void xoa(final String Id){
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Xoá loại hàng");
-        builder.setMessage("Bạn có muốn xóa không");
+        builder.setMessage("Bạn có muốn xóa loại hàng không?");
         builder.setCancelable(true);
         builder.setPositiveButton("Có",
                 new DialogInterface.OnClickListener() {
@@ -98,6 +101,7 @@ public class LoaiHangFragment extends Fragment {
         AlertDialog alert = builder.create();
         builder.show();
     }
+    //Mở Dialog
     protected void openDialog(final Context context, final int type){
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.loai_hang_dialog);
@@ -111,13 +115,14 @@ public class LoaiHangFragment extends Fragment {
             edMaLoaiHang.setText(String.valueOf(item.getMaLoai()));
             edTenLoaiHang.setText(item.getTenLoai());
         }
+        //Xử lý nút huỷ
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
             }
         });
-
+        //Xử lý nút lưu
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,6 +154,7 @@ public class LoaiHangFragment extends Fragment {
         dialog.show();
 
     }
+    //Kiểm tra tính hợp lệ
     public int validate(){
         int check = 1;
         if (edTenLoaiHang.getText().length() ==0 ){
